@@ -56,23 +56,25 @@
     </dependency>
   </dependencies>
   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-            <source>1.6</source>
-            <target>1.6</target>
-            <encoding>UTF-8</encoding>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
     <sourceDirectory>${basedir}/target/generated-sources/main</sourceDirectory>
 <!--
     <testSourceDirectory>${basedir}/target/generated-sources/test</testSourceDirectory>
 -->
+    <resources>
+      <resource>
+        <directory>${basedir}/target/generated-sources/resources</directory>
+      </resource>
+    </resources>
     <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <version>2.7</version>
@@ -86,7 +88,7 @@
             <configuration>
               <outputDirectory>${basedir}</outputDirectory>
               <encoding>UTF-8</encoding>
-              <resources>                                        
+              <resources>
                 <resource>
                   <directory>${basedir}/jp.go.aist.rtm.RTC/src/jp/go/aist/rtm</directory>
                   <targetPath>${basedir}/target/generated-sources/main/jp/go/aist/rtm</targetPath>
@@ -104,6 +106,11 @@
                 <resource>
                   <directory>${basedir}/jp.go.aist.rtm.RTC/tests/src/jp</directory>
                   <targetPath>${basedir}/target/generated-sources/test/jp</targetPath>
+                </resource>
+                <resource>
+                  <directory>${basedir}/jp.go.aist.rtm.RTC/idl</directory>
+                  <targetPath>${basedir}/target/generated-sources/resources/idl</targetPath>
+                  <filtering>false</filtering>
                 </resource>
               </resources>
             </configuration>
